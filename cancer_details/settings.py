@@ -119,11 +119,13 @@ DATABASES = {
 
 
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000',  # React app
+    'http://localhost:3000',
+    'https://quiet-maamoul-55c47a.netlify.app'
 ]
 
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:3000",
+    "https://quiet-maamoul-55c47a.netlify.app"
 ]
 CORS_ALLOW_METHODS = [
     "GET",
