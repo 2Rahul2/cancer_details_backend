@@ -39,7 +39,7 @@ SECRET_KEY = 'django-insecure-s078yn(+wwp7$5#pd$2$xdt&o!cia2*^_mi22u)@^%nb$-%&pv
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["cancer-details-backend.onrender.com"]
+ALLOWED_HOSTS = ["cancer-details-backend.onrender.com" , "localhost"]
 
 
 # Application definition
