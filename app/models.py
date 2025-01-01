@@ -13,4 +13,5 @@ class PatientDetails(models.Model):
     age = models.PositiveSmallIntegerField(null=True)
     gender = models.CharField(max_length=10 ,choices=GenderChoices.choices ,null=True)
     phone_number = models.PositiveIntegerField(max_length=10 ,null=True)
+    history = models.TextField(null=True,blank=True)
 

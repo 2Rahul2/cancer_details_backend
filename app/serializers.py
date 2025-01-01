@@ -35,4 +35,4 @@ class UserSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(source='user.email' ,read_only=True)
     class Meta:
         model = PatientDetails  # This can be any custom user model if you're not using the default User model
-        fields = ['name', 'gender' ,'phone_number' ,'age' ,'email']  # Specify the fields to be returned
+        fields = ['name', 'gender' ,'phone_number' ,'age' ,'email' ,'history']  # Specify the fields to be returned
