@@ -21,10 +21,9 @@ class TokenVerificationView(APIView):
         return Response({"message": "Token is valid"}, status=status.HTTP_200_OK)
 
 class UserRegisterView(CreateAPIView):
-    serializer_class = UserRegisterSerializer  # Point to your serializer
+    serializer_class = UserRegisterSerializer  # Point to your serialize
     permission_classes = [AllowAny]
     def create(self, request, *args, **kwargs):
-        # Optionally, add custom logic here, such as sending a welcome email
         response = super().create(request, *args, **kwargs)
         return {"message": "User Created"}
 
@@ -45,7 +44,7 @@ class UserLoginView(APIView):
             return Response({
                 'message': 'Login successful',
                 'access_token': str(refresh.access_token),
-                'refresh_token': str(refresh),  # Optionally, you can return the refresh token
+                'refresh_token': str(refresh),  
                 'user': {
                     'username': user.username,
                     'email': user.email,
@@ -53,15 +52,13 @@ class UserLoginView(APIView):
                 }
             }, status=status.HTTP_200_OK)
         else:
-            # Authentication failed
             return Response({'error': 'Invalid email or password'}, status=status.HTTP_401_UNAUTHORIZED)
         
 class UserDataView(APIView):
-    permission_classes = [IsAuthenticated]  # Optional, ensure the user is authenticated
+    permission_classes = [IsAuthenticated] 
 
     def get(self, request , id, *args, **kwargs):
-        # Assuming the user is authenticated, return the user's data
-        user = request.user  # Get the current authenticated user
+        user = request.user  
         patient_details = PatientDetails.objects.get(user=user)
         try:
 
