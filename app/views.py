@@ -25,7 +25,7 @@ class UserRegisterView(CreateAPIView):
     permission_classes = [AllowAny]
     def create(self, request, *args, **kwargs):
         response = super().create(request, *args, **kwargs)
-        return {"message": "User Created"}
+        return response
 
 class UserLoginView(APIView):
     permission_classes = [AllowAny]

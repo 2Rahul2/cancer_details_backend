@@ -10,12 +10,18 @@ class UserRegisterSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['email', 'password', 'phone_number', 'name']
-
+    def validate_email(self, value):
+        if User.objects.filter(email=value).exists():
+            raise serializers.ValidationError("A user with this email already exists.")
+        return value
+    def validate_phone_number(self, value):
+        if not value.isdigit() or len(value) != 10:
+            raise serializers.ValidationError("Phone number must be exactly 10 digits.")
+        return value
     def create(self, validated_data):
         # Generate a random username
         random_username = ''.join(random.choices(string.ascii_letters + string.digits, k=10))
-
-        # Create the user
+            # Create the user
         user = User.objects.create_user(
             username=random_username,
             email=validated_data['email'],
